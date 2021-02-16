@@ -234,7 +234,7 @@ return(ret);
 
 EXCEPTION
 when others then ipdisconnect(ipconn);
-return(0);
+RAISE;                  --return(0);
 end;
 end;
 Tom Kyte
