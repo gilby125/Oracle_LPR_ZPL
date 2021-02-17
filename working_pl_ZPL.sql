@@ -29,7 +29,7 @@ BEGIN
 ---------------------------------------------------------------------------------------------------------------------------    
     --OPEN THE CONNECTION
     CONN := UTL_TCP.OPEN_CONNECTION(
-        REMOTE_HOST   => '127.0.0.1',
+        REMOTE_HOST   => '127.0.0.1',  ------aim @ your favorite striped animal  or https://chrome.google.com/webstore/detail/zpl-printer/phoidlklenidapnijkabnfdgmadlcmjo?hl=en-US
         REMOTE_PORT   => 9100,
         TX_TIMEOUT    => 10
     );
