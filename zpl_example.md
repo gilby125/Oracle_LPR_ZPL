@@ -1,0 +1,32 @@
+Oracle’s WMS package has some label printing capabilities, but the functionality is quite poor, and requires knowledge of XML Label printing.
+
+XML Label printing, generally, is the ability to send an XML file to a label printer, where the XML file contains the label format to use, and the data/variables to print on the label.  This allows you to have one label “template” which can be reused for printing similar data.  Printing a shipping label for example.  The label format never changes, but the data does.  The standard solution requires a ZPL Template to be stored on a Zebra printer’s flash memory.  That ZPL template can be coded by hand, or by using Zebra Designer software.  One drawback to this solution is that templates must be downloaded to every printer which will be used. Centralized label template storage would be ideal.
+
+There are several third party solutions that bolt onto the Oracle functionality and allow for a centralized label template, but they also have their own drawbacks, and can cost several hundred thousand dollars to implement, in addition to the ongoing maintenance and server costs.  Even with the third party solutions, the user is still left with quite a few deficiencies with the Oracle WMS feature set.
+
+There is an alternative to the template centralization problem which I think is ideal.  Store the templates on the server which will be generating the print requests.  Instead of having the Zebra printer or third party add on tool merge the XML with the ZPL template, have the same server that is generating the label print requests merge the template/date.
+
+I’ve come up with a simple PL/SQL script which allows a programmer to send a string of text to a label printer through the network using TCP/IP protocol.  It uses the same function that Oracle uses to send the XML to the printer when printing without a third part tool, but instead of sending XML, one can send ZPL.  This script can easily be added to a procedure that splices data with a ZPL template.
+
+The strange thing about this function is that it has multiple outputs and cannot be used in a SELECT statement like most functions.  I’m not sure why Oracle decided to use a function rather than a procedure, but here’s how you can run it:
+
+DECLARE
+
+ l_return_msg           VARCHAR2(3000);
+ l_printer_status       VARCHAR2(3000);
+ l_return               VARCHAR2(3000);
+ l_zpl                  CLOB;
+ l_printer_ip           VARCHAR2(20);
+ l_printer_port         VARCHAR2(10);
+ BEGIN
+ l_zpl :=’^XA^FO50,300^A0N,125,125^FDTEST^XZ’;  –String to send to printer
+ l_printer_ip      :=’192.168.1.10′; –IP Address of printer
+ l_printer_port    :=’9100′;
+ l_return := INV_PRINT_REQUEST.SEND_XML_TCPIP(
+        p_ip_address => l_printer_ip
+    ,   p_port => to_char(l_printer_port)
+    ,   p_xml_content => l_zpl
+    ,   x_return_msg => l_return_msg
+    ,   x_printer_status => l_printer_status
+    );
+END;
