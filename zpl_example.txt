@@ -2,6 +2,9 @@ https://blog.edhayes.us/2016/06/07/print-labels-directly-from-oracle-to-zebra-pr
 https://blog.edhayes.us/2017/01/09/sending-zpl-to-a-label-printer-using-plsql/
 https://hoopercharles.wordpress.com/2009/12/12/print-oracle-data-to-a-barcode-label-with-a-zebra-printer-using-vbs-and-excel/
 
+http://acitemreh.blogspot.com/2019/11/plzpl-printing-to-zebra-printers-from.html
+
+this only applies to WMS.....
 Oracle’s WMS package has some label printing capabilities, but the functionality is quite poor, and requires knowledge of XML Label printing.
 
 XML Label printing, generally, is the ability to send an XML file to a label printer, where the XML file contains the label format to use, and the data/variables to print on the label.  This allows you to have one label “template” which can be reused for printing similar data.  Printing a shipping label for example.  The label format never changes, but the data does.  The standard solution requires a ZPL Template to be stored on a Zebra printer’s flash memory.  That ZPL template can be coded by hand, or by using Zebra Designer software.  One drawback to this solution is that templates must be downloaded to every printer which will be used. Centralized label template storage would be ideal.
