@@ -25,7 +25,7 @@ BEGIN
 ^FD>:'||tagVal||'^FS
 ^FT368,108^A0I,33,33^FH\^FDZEBRA (ZPL-II)^FS
 ^FT11,151^BQN,2,3
-^FH\^FDLA,http://bryan.gilbertson.com^FS
+^FH\^FDLA,http://bryangilbertson.com^FS
 ^PQ'||bcCopy||',0,1,Y^XZ';
 ---------------------------------------------------------------------------------------------------------------------------    
     --OPEN THE CONNECTION
