@@ -1,0 +1,246 @@
+--------------------------------------------------------
+--  File created - Wednesday-February-17-2021   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table RPT_REQST_Q
+--------------------------------------------------------
+
+  CREATE TABLE "WMOS"."RPT_REQST_Q" 
+   (	"RPT_REQST_ID" VARCHAR2(10 CHAR), 
+	"PRT_REQSTR" VARCHAR2(255 CHAR), 
+	"PRT_SERV_TYPE" VARCHAR2(10 CHAR), 
+	"RPT_PARM" VARCHAR2(255 CHAR), 
+	"USER_ID" VARCHAR2(15 CHAR), 
+	"CREATE_DATE_TIME" DATE, 
+	"MOD_DATE_TIME" DATE, 
+	"WHSE" VARCHAR2(3 CHAR), 
+	"STAT_CODE" NUMBER(2,0) DEFAULT 0, 
+	"NBR_OF_COPIES" NUMBER(3,0) DEFAULT 0, 
+	"NBR_OF_ATTEMPTS" NUMBER(5,0) DEFAULT 0, 
+	"RPT_OUTPT_PATH" VARCHAR2(255 CHAR), 
+	"NBR_OF_REPRINTS" NUMBER(2,0) DEFAULT 0, 
+	"CD_MASTER_ID" NUMBER(9,0), 
+	"LOGIN_SVR_3PL" CHAR(1 CHAR)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMDATA"  ENABLE ROW MOVEMENT ;
+  GRANT SELECT ON "WMOS"."RPT_REQST_Q" TO "WMOSREAD";
+  GRANT SELECT ON "WMOS"."RPT_REQST_Q" TO "WMOS_SELECT";
+  GRANT UPDATE ON "WMOS"."RPT_REQST_Q" TO "WMOS_ALL";
+  GRANT SELECT ON "WMOS"."RPT_REQST_Q" TO "WMOS_ALL";
+  GRANT INSERT ON "WMOS"."RPT_REQST_Q" TO "WMOS_ALL";
+  GRANT DELETE ON "WMOS"."RPT_REQST_Q" TO "WMOS_ALL";
+--------------------------------------------------------
+--  DDL for Table CD_MASTER
+--------------------------------------------------------
+
+  CREATE TABLE "WMOS"."CD_MASTER" 
+   (	"CD_MASTER_ID" NUMBER(9,0), 
+	"CO" VARCHAR2(10 CHAR), 
+	"DIV" VARCHAR2(10 CHAR), 
+	"CREATE_DATE_TIME" DATE, 
+	"MOD_DATE_TIME" DATE, 
+	"USER_ID" VARCHAR2(15 CHAR)
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMDATA" ;
+  GRANT SELECT ON "WMOS"."CD_MASTER" TO "WMOSREAD";
+  GRANT SELECT ON "WMOS"."CD_MASTER" TO "WMOS_SELECT";
+  GRANT UPDATE ON "WMOS"."CD_MASTER" TO "WMOS_ALL";
+  GRANT SELECT ON "WMOS"."CD_MASTER" TO "WMOS_ALL";
+  GRANT INSERT ON "WMOS"."CD_MASTER" TO "WMOS_ALL";
+  GRANT DELETE ON "WMOS"."CD_MASTER" TO "WMOS_ALL";
+--------------------------------------------------------
+--  DDL for Table C_AUD_RPT_REQST_Q
+--------------------------------------------------------
+
+  CREATE TABLE "WMOS"."C_AUD_RPT_REQST_Q" 
+   (	"RRQ_RPT_REQST_ID" VARCHAR2(10 CHAR), 
+	"RRQ_CREATE_DATE_TIME" DATE, 
+	"RRQ_MOD_DATE_TIME" DATE, 
+	"RRQ_STAT_CODE" NUMBER(2,0), 
+	"OSUSER" VARCHAR2(30 CHAR), 
+	"PROCESS" VARCHAR2(12 CHAR), 
+	"PROGRAM_NAME" VARCHAR2(48 CHAR), 
+	"MACHINE_NAME" VARCHAR2(64 CHAR), 
+	"MODULE_NAME" VARCHAR2(48 CHAR), 
+	"CURRENT_DATE" DATE
+   ) PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMDATA" ;
+--------------------------------------------------------
+--  DDL for Index PK_RPT_REQST_Q
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "WMOS"."PK_RPT_REQST_Q" ON "WMOS"."RPT_REQST_Q" ("RPT_REQST_ID") 
+  PCTFREE 20 INITRANS 30 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMINDX" ;
+--------------------------------------------------------
+--  DDL for Index RPT_REQST_Q_IND_1
+--------------------------------------------------------
+
+  CREATE INDEX "WMOS"."RPT_REQST_Q_IND_1" ON "WMOS"."RPT_REQST_Q" ("STAT_CODE") 
+  PCTFREE 20 INITRANS 30 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMINDX" ;
+--------------------------------------------------------
+--  DDL for Index RPT_REQST_Q_IND_2
+--------------------------------------------------------
+
+  CREATE INDEX "WMOS"."RPT_REQST_Q_IND_2" ON "WMOS"."RPT_REQST_Q" ("CREATE_DATE_TIME") 
+  PCTFREE 20 INITRANS 30 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMINDX" ;
+--------------------------------------------------------
+--  DDL for Index FK_RPT_REQST_Q_TO_CD_MASTER
+--------------------------------------------------------
+
+  CREATE INDEX "WMOS"."FK_RPT_REQST_Q_TO_CD_MASTER" ON "WMOS"."RPT_REQST_Q" ("CD_MASTER_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMINDX" ;
+--------------------------------------------------------
+--  DDL for Trigger T_C_AUD_RPT_REQST_Q
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "WMOS"."T_C_AUD_RPT_REQST_Q" 
+	AFTER INSERT OR UPDATE OF STAT_CODE ON RPT_REQST_Q
+	FOR EACH ROW
+	  WHEN (NEW.PRT_SERV_TYPE = 'PACKSLIP') DECLARE
+
+
+BEGIN
+     Audit_Log.Audit_Session_info;
+
+  --Insertion into Audit table of CASE_HDR
+	INSERT INTO C_AUD_RPT_REQST_Q
+  VALUES
+	(
+	:NEW.rpt_reqst_id,
+	:NEW.create_date_time,
+	:NEW.mod_date_time,
+	:NEW.stat_code,
+  	Audit_Log.g_OsUser,
+  	Audit_Log.g_Process,
+  	Audit_Log.g_ProgramName,
+  	Audit_Log.g_Machine,
+  	Audit_Log.g_Module,
+  	Audit_Log.g_CurrDate
+	);
+  EXCEPTION
+      WHEN OTHERS THEN
+        raise_application_error(-20005,'Error during insert into C_AUD_RPT_REQST_Q table '||sqlerrm);
+END;
+
+/
+ALTER TRIGGER "WMOS"."T_C_AUD_RPT_REQST_Q" DISABLE;
+--------------------------------------------------------
+--  DDL for Trigger TDA_ARCH_RPT_REQST_Q
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "WMOS"."TDA_ARCH_RPT_REQST_Q" 
+AFTER DELETE ON RPT_REQST_Q
+FOR EACH ROW
+
+DECLARE
+
+   v_audsid number := 0;
+
+
+BEGIN
+
+
+   BEGIN
+
+      SELECT 1
+        INTO v_audsid
+        FROM v$session
+       WHERE audsid = userenv('sessionid') and program like '%PkPurgesS%';
+   EXCEPTION
+       WHEN NO_DATA_FOUND THEN
+          v_audsid := 0;
+   END;
+
+
+IF v_audsid = 1 THEN
+
+   INSERT INTO RPT_REQST_Q@WMOS_TO_ARCHIVE.WORLD(RPT_REQST_ID,PRT_REQSTR,PRT_SERV_TYPE,RPT_PARM,USER_ID,CREATE_DATE_TIME,MOD_DATE_TIME,WHSE,STAT_CODE,NBR_OF_COPIES,
+         NBR_OF_ATTEMPTS,RPT_OUTPT_PATH,NBR_OF_REPRINTS,CD_MASTER_ID,LOGIN_SVR_3PL) Values(:old.RPT_REQST_ID,:old.PRT_REQSTR,:old.PRT_SERV_TYPE,:old.RPT_PARM,:old.USER_ID,:old.CREATE_DATE_TIME,
+         :old.MOD_DATE_TIME,:old.WHSE,:old.STAT_CODE,:old.NBR_OF_COPIES,:old.NBR_OF_ATTEMPTS,:old.RPT_OUTPT_PATH,:old.NBR_OF_REPRINTS,:old.CD_MASTER_ID,:old.LOGIN_SVR_3PL);
+
+END IF;
+
+END;
+
+
+/
+ALTER TRIGGER "WMOS"."TDA_ARCH_RPT_REQST_Q" DISABLE;
+--------------------------------------------------------
+--  DDL for Package AUDIT_LOG
+--------------------------------------------------------
+
+  CREATE OR REPLACE PACKAGE "WMOS"."AUDIT_LOG" AS
+--Store global transaction variables
+
+   g_OsUser         VARCHAR2(30);
+   g_Process        VARCHAR2(12);
+   g_ProgramName    VARCHAR2(48);
+   g_Machine        VARCHAR2(64);
+   g_Module         VARCHAR2(48);
+   g_CurrDate       DATE;
+
+--Some simple global variables
+
+   PROCEDURE Audit_Session_info;
+
+END Audit_Log;
+ 
+
+/
+--------------------------------------------------------
+--  DDL for Synonymn V$SESSION
+--------------------------------------------------------
+
+  CREATE OR REPLACE PUBLIC SYNONYM "V$SESSION" FOR "SYS"."V_$SESSION";
+--------------------------------------------------------
+--  Constraints for Table RPT_REQST_Q
+--------------------------------------------------------
+
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("NBR_OF_REPRINTS" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("NBR_OF_ATTEMPTS" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("NBR_OF_COPIES" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("STAT_CODE" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("WHSE" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("PRT_SERV_TYPE" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("PRT_REQSTR" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" MODIFY ("RPT_REQST_ID" NOT NULL ENABLE);
+  ALTER TABLE "WMOS"."RPT_REQST_Q" ADD CONSTRAINT "PK_RPT_REQST_Q" PRIMARY KEY ("RPT_REQST_ID")
+  USING INDEX PCTFREE 20 INITRANS 30 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 1048576 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT)
+  TABLESPACE "SLMINDX"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table RPT_REQST_Q
+--------------------------------------------------------
+
+  ALTER TABLE "WMOS"."RPT_REQST_Q" ADD CONSTRAINT "FK_RPT_REQST_Q_TO_CD_MASTER" FOREIGN KEY ("CD_MASTER_ID")
+	  REFERENCES "WMOS"."CD_MASTER" ("CD_MASTER_ID") ENABLE;
