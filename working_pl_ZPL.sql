@@ -1,5 +1,5 @@
 
----------------------------need to GRANT ALL ON UTL_TCP TO <USER>;
+-----------------------------------------------need to GRANT ALL ON UTL_TCP TO <USER>;----------------------------------------------
 DECLARE
     CONN         UTL_TCP.CONNECTION;
     RETVAL       BINARY_INTEGER;
