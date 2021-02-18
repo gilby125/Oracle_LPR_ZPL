@@ -4,7 +4,7 @@ DECLARE
     CONN         UTL_TCP.CONNECTION;
     RETVAL       BINARY_INTEGER;
     L_RESPONSE   VARCHAR2(1500) := '';
-    L_TEXT  VARCHAR2(5500);    
+    L_TEXT  VARCHAR2(1000);    
     bcCopy number := 10;
     tagVal varchar2(1500) := 't';
     image varchar2(5500);
