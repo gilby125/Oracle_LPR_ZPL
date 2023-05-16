@@ -1,8 +1,4 @@
-https://blog.edhayes.us/2016/06/07/print-labels-directly-from-oracle-to-zebra-printers/
-https://blog.edhayes.us/2017/01/09/sending-zpl-to-a-label-printer-using-plsql/
-https://hoopercharles.wordpress.com/2009/12/12/print-oracle-data-to-a-barcode-label-with-a-zebra-printer-using-vbs-and-excel/
-http://www.jcgonzalez.com/img-to-zpl-online
-http://acitemreh.blogspot.com/2019/11/plzpl-printing-to-zebra-printers-from.html
+
 
 this only applies to WMS.....
 Oracle’s WMS package has some label printing capabilities, but the functionality is quite poor, and requires knowledge of XML Label printing.
